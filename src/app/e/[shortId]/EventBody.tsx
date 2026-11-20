@@ -1,6 +1,9 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import EventComments from '@/components/EventComments'
+import EventPhotos from '@/components/EventPhotos'
+import WhosGoing from '@/components/WhosGoing'
 import {
   Calendar,
   Clock,
@@ -675,6 +678,26 @@ export default function EventBody({ event, shortId, shortUrl, relatedEvents }: P
         {/* Mobile ad — shown only on small screens where sidebar is hidden */}
         <div className="lg:hidden mt-6">
           
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════
+          WHO'S GOING + COMMENTS + PHOTOS
+          ════════════════════════════════════════════════════════════════ */}
+      <section className="py-8 sm:py-10" style={{ borderTop: '1px solid #E2E8F0' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Who's Going */}
+          <WhosGoing eventId={event.id} />
+
+          {/* Photos */}
+          <div className="mt-8">
+            <EventPhotos eventId={event.id} />
+          </div>
+
+          {/* Comments */}
+          <div className="mt-8">
+            <EventComments eventId={event.id} organizerEmail={event.publisher_name} />
+          </div>
         </div>
       </section>
 
