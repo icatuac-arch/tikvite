@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.ticvite.com" }],
+      "destination": "https://ticvite.com/$1",
+      "permanent": true
+    }
+  ],
+  "crons": [
+    { "path": "/api/cron/cleanup", "schedule": "0 7 * * *" },
+    { "path": "/api/cron/release-holds", "schedule": "* * * * *" },
+    { "path": "/api/cron/reminders", "schedule": "0 */3 * * *" }
+  ]
+}
