@@ -18,7 +18,7 @@ export async function GET(
   const supabase = getSupabase()
   const { data, error } = await supabase
     .from('event_interest')
-    .select('user_name, avatar_url, signal')
+    .select('user_name, signal')
     .eq('event_id', params.id)
 
   if (error) {
@@ -32,7 +32,6 @@ export async function GET(
 
   const attendees = rows.map((r) => ({
     name: r.user_name,
-    avatar_url: r.avatar_url ?? null,
     signal: r.signal,
   }))
 

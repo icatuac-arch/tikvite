@@ -20,7 +20,7 @@ export async function GET(
     .from('event_comments')
     .select('*')
     .eq('event_id', params.id)
-    .order('pinned', { ascending: false })
+    .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -81,7 +81,7 @@ export async function POST(
       author_email,
       body: commentBody,
       likes_count: 0,
-      pinned: false,
+      is_pinned: false,
     })
     .select()
     .single()
